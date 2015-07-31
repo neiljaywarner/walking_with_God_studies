@@ -41,17 +41,11 @@ public class MainActivityFragment extends Fragment {
 
             StudiesList studiesList = gson.fromJson(inputStreamReader,StudiesList.class);
 
-            Study seekingGod = studiesList.studies.get(0);
+            Study study = studiesList.studies.get(0);
 
-            Log.i("NJW", "Seeking God titlte=" + seekingGod.getTitle());
-            Log.i("NJW", "ref0="+ seekingGod.getItems().get(0).getRef());
-            Log.i("NJW", "note0="+ seekingGod.getItems().get(0).getNote());
+            ///TODO:Depending on bundle args - based on which navdrawer item is clicked - study Index.
+            //study.getItems() can bind to a listView
 
-            Study word = studiesList.studies.get(1);
-
-            Log.i("NJW", "Word titlte=" + word.getTitle());
-            Log.i("NJW", "ref0="+ word.getItems().get(0).getRef());
-            Log.i("NJW", "note0="+ word.getItems().get(0).getNote());
             inputStreamReader.close();
 
         } catch (IOException e) {
@@ -78,20 +72,5 @@ public class MainActivityFragment extends Fragment {
 
 
     }
-
-    class Verses {
-        public String title;
-        List<Data> dataset = new ArrayList<>();
-
-
-    }
-
-    class Data {
-        public String ref;
-        public String note;
-    }
-
-
-
 
 }
