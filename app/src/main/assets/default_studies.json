@@ -1,20 +1,19 @@
+{
+"description":"Core - part 1",
+  "studies":
+[{
+  "title":"Seeking God.",
+  "dataset":[{"note":"We will find God when we seek Him with all of our hearts.","ref":"Jeremiah 29:11-13"},{"note":"testb","ref":"matt 1b"}]
+ },
+  {
+    "title":"Word of God.",
+    "dataset":[{"note":"Usefulness of the Word","ref":"2 Timothy 3:16-17"},{"note":"testb","ref":"matt 1b"}]
+  },
 
-
-[
   {
-    "ref": "Jeremiah 29:11-13",
-    "note": "We will find God when we seek Him with all of our hearts."
-  },
-  {
-    "ref": "Matthew 7:7-11",
-    "note": "Persistence is necessary in finding God."
-  },
-  {
-    "ref": "Matthew 6:25-34",
-    "note": "Worrying can distract us from finding God."
-  },
-  {
-    "ref": "Acts 17:22-31",
-    "note": "God made everything and everyone for the purpose of finding Him."
+    "title":"Discipleship",
+    "dataset":[{"note":"test","ref":"matt 1"},{"note":"testb","ref":"matt 1b"}]
   }
+
 ]
+}
