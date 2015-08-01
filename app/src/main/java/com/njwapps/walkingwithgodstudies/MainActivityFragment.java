@@ -1,10 +1,16 @@
 package com.njwapps.walkingwithgodstudies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -34,6 +40,7 @@ public class MainActivityFragment extends Fragment {
     private static final String ARG_SECTION_NUMBER = "section_number";
     VerseListAdapter mAdapter;
     StudiesList mStudiesList;
+    private Study mStudy;
     private int mSectionNumber;
     /**
      * The fragment's ListView/GridView.
@@ -56,11 +63,28 @@ public class MainActivityFragment extends Fragment {
         return fragment;
     }
 
+    //for sharing
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+
+        // Retrieve the share menu item
+        MenuItem shareItem = menu.findItem(R.id.menu_share);
+
+        // Now get the ShareActionProvider from the item
+        ShareActionProvider shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+
+        shareActionProvider.setShareIntent(getShareIntent(mStudy.getShareText()));
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
 
     //TODO: newInstance method
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true); //for sharing
         // get args
         mSectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         InputStream is= null;
@@ -74,10 +98,6 @@ public class MainActivityFragment extends Fragment {
 
             mStudiesList = gson.fromJson(inputStreamReader, StudiesList.class);
 
-
-            ///TODO:Depending on bundle args - based on which navdrawer item is clicked - study Index.
-            //study.getItems() can bind to a listView
-
             inputStreamReader.close();
 
         } catch (IOException e) {
@@ -88,6 +108,7 @@ public class MainActivityFragment extends Fragment {
 
         mAdapter = new VerseListAdapter(getActivity());
 
+        mStudy = mStudiesList.studies.get(mSectionNumber); //for test purposes.
 
 
     }
@@ -103,12 +124,26 @@ public class MainActivityFragment extends Fragment {
 
         //progress bar?
 
-        Study study = mStudiesList.studies.get(mSectionNumber); //for test purposes.
 
-        mAdapter.setData(study.getItems());
+        mAdapter.setData(mStudy.getItems());
 
 
         return root;
+    }
+
+    /**
+     * Returns an {@link android.content.Intent} which can be used to share this item's content with other
+     * applications.
+     *
+     * @return Intent to be given to a ShareActionProvider.
+     */
+    public Intent getShareIntent(String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        //TODO: Optionally could set a subject.
+        intent.setType("text/plain");
+        // Get the string resource and bundle it as an intent extra
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        return intent;
     }
 
     public static class VerseListAdapter extends ArrayAdapter<VerseInfo> {

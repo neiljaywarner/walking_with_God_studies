@@ -18,4 +18,14 @@ public class Study {
     public String getTitle() {
         return title;
     }
+
+    public String getShareText() {
+        String shareText = getTitle() + "\n";
+        for (int i = 0; i < getItems().size(); i++) {
+            VerseInfo verseInfo = getItems().get(i);
+            shareText += "\n" + verseInfo.getRef();
+            shareText += "\n" + verseInfo.getNote() + "\n";
+        }
+        return shareText;
+    }
 }
