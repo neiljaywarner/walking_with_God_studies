@@ -94,7 +94,7 @@ public class MainActivityFragment extends Fragment {
 
         //progress bar?
 
-        Study study = mStudiesList.studies.get(0); //for test purposes.
+        Study study = mStudiesList.studies.get(1); //for test purposes.
 
         mAdapter.setData(study.getItems());
 
@@ -133,6 +133,8 @@ public class MainActivityFragment extends Fragment {
             VerseInfo item = getItem(position);
 
             ((TextView) view.findViewById(R.id.text_verse)).setText(item.getRef());
+
+            ((TextView) view.findViewById(R.id.text_note)).setText(item.getNote());
 
 
             return view;

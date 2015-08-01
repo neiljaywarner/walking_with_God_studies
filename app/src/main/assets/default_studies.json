@@ -1,16 +1,24 @@
 {
-  "description": "Core - part 1",
+  "description": "Core - part 1 (http://www.dfwchurch.org/core-studies.html)",
   "studies": [
     {
       "title": "Seeking God.",
       "dataset": [
         {
-          "note": "We will find God when we seek Him with all of our hearts.",
-          "ref": "Jeremiah 29:11-13"
+          "ref": "Jeremiah 29:11-13",
+          "note": "We will find God when we seek Him with all of our hearts."
         },
         {
-          "note": "testb",
-          "ref": "matt 1b"
+          "ref": "Matthew 7:7-11",
+          "note": "Persistence is necessary in finding God."
+        },
+        {
+          "ref": "Matthew 6:25-34",
+          "note": "Worrying can distract us from finding God."
+        },
+        {
+          "ref": "Acts 17:22-31",
+          "note": "God made everything and everyone for the purpose of finding Him."
         }
       ]
     },
@@ -18,12 +26,28 @@
       "title": "Word of God.",
       "dataset": [
         {
-          "note": "Usefulness of the Word",
-          "ref": "2 Timothy 3:16-17"
+          "ref": "2 Timothy 3:16-17",
+          "note": "Usefulness of the Word"
         },
         {
-          "note": "testb",
-          "ref": "matt 1b"
+          "ref": "Hebrews 4:12-13",
+          "note": "Relevance of the Word"
+        },
+        {
+          "ref": "Matthew 15:1-9",
+          "note": "Traditions vs. the Word"
+        },
+        {
+          "ref": "James 1:19-25",
+          "note": "Obedience to the Word"
+        },
+        {
+          "ref": "1 Timothy 4:16",
+          "note": "Salvation through the Word"
+        },
+        {
+          "ref": "John 12:47-48",
+          "note": "Judgment by the Word"
         }
       ]
     },
@@ -31,12 +55,36 @@
       "title": "Discipleship",
       "dataset": [
         {
-          "note": "test",
-          "ref": "matt 1"
+          "ref": "Acts 11:19-26",
+          "note": "Disciple = Christian"
         },
         {
-          "note": "testb",
-          "ref": "matt 1b"
+          "ref": "Mark 1:14-18",
+          "note": "Beginning of Discipleship"
+        },
+        {
+          "ref": "Luke 9:23-26",
+          "note": "Challenge of Discipleship"
+        },
+        {
+          "ref": "Luke 14:25-35",
+          "note": "Cost of Discipleship"
+        },
+        {
+          "ref": "John 8:31-32",
+          "note": "Standard of Discipleship"
+        },
+        {
+          "ref": "John 13:34-35",
+          "note": "Relationships of Discipleship"
+        },
+        {
+          "ref": "John 15:5-8",
+          "note": "Fruit of Discipleship"
+        },
+        {
+          "ref": "Matthew 28:18-20",
+          "note": "Commission of Discipleship"
         }
       ]
     }
