@@ -5,20 +5,20 @@
         <item
             android:id="@+id/drawer_1"
             android:checked="true"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@android:drawable/ic_menu_view"
             android:orderInCategory="0"
             android:title="@string/title_section1" />
 
         <item
             android:id="@+id/drawer_2"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@android:drawable/ic_dialog_map"
             android:orderInCategory="1"
             android:title="@string/title_section2" />
         ...
 
         <item
             android:id="@+id/drawer_3"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@android:drawable/ic_menu_myplaces"
             android:orderInCategory="2"
             android:title="@string/title_section3" />
 
