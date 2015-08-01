@@ -43,9 +43,7 @@ public class MainActivityFragment extends Fragment {
     StudiesList mStudiesList;
     private Study mStudy;
     private int mSectionNumber;
-    /**
-     * The fragment's ListView/GridView.
-     */
+
     private AbsListView mListView;
 
     public MainActivityFragment() {
@@ -184,7 +182,6 @@ public class MainActivityFragment extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("NJW", "go to browser for verse:" + item.getRef());
                     String url = "https://www.biblegateway.com/passage/?search=" + item.getRef();
                     Intent i = new Intent(Intent.ACTION_VIEW);
                     i.setData(Uri.parse(url));
