@@ -27,9 +27,14 @@ import java.util.List;
  */
 public class MainActivityFragment extends Fragment {
 
-
+    /**
+     * The fragment argument representing the section number for this
+     * fragment.
+     */
+    private static final String ARG_SECTION_NUMBER = "section_number";
     VerseListAdapter mAdapter;
     StudiesList mStudiesList;
+    private int mSectionNumber;
     /**
      * The fragment's ListView/GridView.
      */
@@ -38,22 +43,26 @@ public class MainActivityFragment extends Fragment {
     public MainActivityFragment() {
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
 
-        //TODO: Set Empty Text.
-
-        // Create an empty adapter we will use to display the loaded data.
-
-
+    /**
+     * Returns a new instance of this fragment for the given section
+     * number.
+     */
+    public static MainActivityFragment newInstance(int sectionNumber) {
+        MainActivityFragment fragment = new MainActivityFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+        fragment.setArguments(args);
+        return fragment;
     }
+
 
     //TODO: newInstance method
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // get args
+        mSectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         InputStream is= null;
         InputStreamReader inputStreamReader = null;
         GsonBuilder builder = new GsonBuilder();
@@ -94,7 +103,7 @@ public class MainActivityFragment extends Fragment {
 
         //progress bar?
 
-        Study study = mStudiesList.studies.get(1); //for test purposes.
+        Study study = mStudiesList.studies.get(mSectionNumber); //for test purposes.
 
         mAdapter.setData(study.getItems());
 

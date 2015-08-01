@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">Walking with God Studies</string>
+    <string name="app_name">Walk w/ God</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_section1">Seeking God.</string>
+    <string name="title_section2">Word of God.</string>
+    <string name="title_section3">Discipleship</string>
+
+
 </resources>
