@@ -2,6 +2,7 @@ package com.njwapps.walkingwithgodstudies;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
@@ -42,9 +43,7 @@ public class MainActivityFragment extends Fragment {
     StudiesList mStudiesList;
     private Study mStudy;
     private int mSectionNumber;
-    /**
-     * The fragment's ListView/GridView.
-     */
+
     private AbsListView mListView;
 
     public MainActivityFragment() {
@@ -146,7 +145,7 @@ public class MainActivityFragment extends Fragment {
         return intent;
     }
 
-    public static class VerseListAdapter extends ArrayAdapter<VerseInfo> {
+    public class VerseListAdapter extends ArrayAdapter<VerseInfo> {
         private final LayoutInflater mInflater;
 
         public VerseListAdapter(Context context) {
@@ -174,12 +173,21 @@ public class MainActivityFragment extends Fragment {
                 view = convertView;
             }
 
-            VerseInfo item = getItem(position);
+            final VerseInfo item = getItem(position);
 
             ((TextView) view.findViewById(R.id.text_verse)).setText(item.getRef());
 
             ((TextView) view.findViewById(R.id.text_note)).setText(item.getNote());
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String url = "https://www.biblegateway.com/passage/?search=" + item.getRef();
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    MainActivityFragment.this.getActivity().startActivity(i);
+                }
+            });
 
             return view;
         }
