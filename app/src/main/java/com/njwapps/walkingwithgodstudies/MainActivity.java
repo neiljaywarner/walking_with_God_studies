@@ -9,6 +9,9 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -17,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBar actionBar;
+    private Tracker mTracker;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
 
         //  final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //  setSupportActionBar(toolbar);
@@ -39,7 +45,13 @@ public class MainActivity extends AppCompatActivity {
         view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+               // Log.i(TAG, "Setting screen name: " + name);
+              
+                String name = menuItem.getTitle().toString();
                 actionBar.setTitle(menuItem.getTitle());
+              //  Log.i(TAG, "Setting screen name: " + name);
+                mTracker.setScreenName("Image~" + name);
+                mTracker.send(new HitBuilders.ScreenViewBuilder().build());
                 showSection(menuItem.getOrder());
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
