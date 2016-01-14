@@ -45,12 +45,10 @@ public class MainActivity extends AppCompatActivity {
         view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-               // Log.i(TAG, "Setting screen name: " + name);
-              
+
                 String name = menuItem.getTitle().toString();
                 actionBar.setTitle(menuItem.getTitle());
-              //  Log.i(TAG, "Setting screen name: " + name);
-                mTracker.setScreenName("Image~" + name);
+                mTracker.setScreenName("Screen" + name);
                 mTracker.send(new HitBuilders.ScreenViewBuilder().build());
                 showSection(menuItem.getOrder());
                 menuItem.setChecked(true);
