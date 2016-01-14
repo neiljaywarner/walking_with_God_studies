@@ -18,6 +18,8 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.njwapps.walkingwithgodstudies.model.Study;
@@ -45,6 +47,8 @@ public class MainActivityFragment extends Fragment {
     private int mSectionNumber;
 
     private AbsListView mListView;
+
+    private Tracker mTracker;
 
     public MainActivityFragment() {
     }
@@ -74,6 +78,19 @@ public class MainActivityFragment extends Fragment {
         ShareActionProvider shareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
 
         shareActionProvider.setShareIntent(getShareIntent(mStudy.getShareText()));
+        shareActionProvider.setOnShareTargetSelectedListener(new ShareActionProvider.OnShareTargetSelectedListener() {
+            @Override
+            public boolean onShareTargetSelected(ShareActionProvider source, Intent intent) {
+
+                // Build and send social interaction.
+                mTracker.send(new HitBuilders.SocialBuilder()
+                        .setNetwork(intent.getPackage())
+                        .setAction("share")
+                        .setTarget(source.toString())
+                        .build());
+                return false;  //return result ignored, return false for consistency.
+            }
+        });
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -84,6 +101,10 @@ public class MainActivityFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true); //for sharing
+
+        AnalyticsApplication application = (AnalyticsApplication) this.getActivity().getApplication();
+        mTracker = application.getDefaultTracker();
+
         // get args
         mSectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         InputStream is= null;
